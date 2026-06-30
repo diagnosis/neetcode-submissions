@@ -1,0 +1,21 @@
+func trap(height []int)int{
+		water := 0
+	left := 0
+	right := len(height) - 1
+	leftMax := 0
+	rightMax := 0
+
+	for left < right {
+		if height[left] < height[right]{
+			leftMax = max(leftMax, height[left])
+			water += leftMax - height[left]
+			left++
+		}else{
+			rightMax = max(rightMax, height[right])
+			water += rightMax - height[right]
+			right--
+		}
+	}
+	
+	return water
+}
